@@ -1,0 +1,2 @@
+#!/bin/sh
+nuitka3 src/main.py --follow-imports -o nook

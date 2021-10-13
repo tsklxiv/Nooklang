@@ -1,0 +1,6 @@
+# Simple arithmetic operators in Nook
+500 300 + w
+100 200 - w
+300 400 * w
+400 400 / w
+100 5   % w
