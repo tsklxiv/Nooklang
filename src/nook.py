@@ -74,12 +74,14 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             stack.append(number)
         # Store/Load
         elif current == "s":
+            c += 1
             var, c = consume(lambda c: c != " ", inpt, c)
             value = pop(stack)
             vc = c
 
             set_env(env, var, value)
         elif current == "l":
+            c += 1
             var, c = consume(lambda c: c != " ", inpt, c)
             vc = c
 
