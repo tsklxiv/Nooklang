@@ -49,13 +49,14 @@ def run(inpt: str, stack: list, env: dict):
 
     while c < len(inpt):
         current = inpt[c]
-
-        # Consume positive numbers
-        if numeric(current):
-            number, c = consume(lambda c: numeric(c), inpt, c)
-            number = int(number)
-            vc = c
-            stack.append(number)
+        
+        # String
+        if current == "{":
+            c += 1 # Ignore the '{'
+            string, c = consume(lambda c: c != "}", inpt, c)
+            stack.append(string)
+            # c += 1
+            vc = c  
         # Consume negative numbers (_500 = -500)
         elif current == "_":
             c += 1
@@ -73,6 +74,11 @@ def run(inpt: str, stack: list, env: dict):
             vc = 0
             line += 1
             c += 1 
+        elif numeric(current):
+            number, c = consume(lambda c: numeric(c), inpt, c)
+            number = int(number)
+            vc = c
+            stack.append(number)
         elif identifier(current):
             name, c = consume(lambda c: identifier(c), inpt, c)
             vc = c
@@ -81,13 +87,6 @@ def run(inpt: str, stack: list, env: dict):
                 env[name]()
             else:
                 report(f"Not defined: {repr(name)}", line, vc) 
-        # String
-        elif current == "{":
-            c += 1 # Ignore the '{'
-            string, c = consume(lambda c: c != "}", inpt, c)
-            stack.append(string)
-            # c += 1
-            vc = c 
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
             vc += 1
