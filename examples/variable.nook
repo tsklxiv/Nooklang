@@ -1,9 +1,9 @@
 # Variables in Nook
 10
-{a}s # Store 10 to 'a'
-{a}l w # Print 'a'
+a s # Store 10 to 'a'
+a l w # Print 'a'
 20
-{b}s # Store 20 to 'b'
-{a}l # Load 'a'
-{b}l # Load 'b'
+b s # Store 20 to 'b'
+a l # Load 'a'
+b l # Load 'b'
 + w  # Print 'a + b'
