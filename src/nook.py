@@ -109,7 +109,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "+": lambda: stack.append(stack.pop() + stack.pop()), 
         "-": lambda: stack.append(stack.pop() - stack.pop()), 
         "*": lambda: stack.append(stack.pop() * stack.pop()),
-        "/": lambda: stack.append(stack.pop() / stack.pop()),
+        "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
         "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
         "l": lambda: stack.append(env[str(pop(stack))]),
