@@ -1,2 +1,2 @@
 #!/bin/sh
-nuitka3 src/main.py --standalone --onefile --follow-imports -o nook
+nuitka3 src/main.py --standalone --onefile --follow-imports
