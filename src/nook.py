@@ -107,20 +107,21 @@ def each(script: str, how_much: int):
 
 # Initialize environment
 def init_env(stack: list = [], env: dict = {}) -> tuple:
-    env = {
-        "v": lambda: print(stack),
-        "w": lambda: print(pop(stack)),
-        "p": lambda: print(peek(stack)),
-        ".": lambda: pop(stack),
+    env = { 
         "+": lambda: stack.append(stack.pop() + stack.pop()), 
         "-": lambda: stack.append(stack.pop() - stack.pop()), 
         "*": lambda: stack.append(stack.pop() * stack.pop()),
         "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
+        ".": lambda: pop(stack),
+        "v": lambda: print(stack),
+        "w": lambda: print(pop(stack)),
+        "p": lambda: print(peek(stack)),
         "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
         "l": lambda: stack.append(env[str(pop(stack))]),
         "x": lambda: run_script(str(pop(stack))),
         "e": lambda: each(str(pop(stack)), pop(stack)),
+        "i": lambda: stack.append(int(input(""))),
     }
 
     return (stack, env)
