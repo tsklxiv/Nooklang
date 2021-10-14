@@ -52,7 +52,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
     c = 0  # Pointer
     vc = 0  # Virtual pointer
     line = 1  # Line
-    start_string, end_string = ("{", "}") if not no_curly else ("[", "]")
+    start_string, end_string = ("[", "]") if no_curly else ("{", "}")
 
     while c < len(inpt):
         current = inpt[c]
