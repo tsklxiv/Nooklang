@@ -42,18 +42,19 @@ def consume(condition, inpt: str, pos: int):
     return (inpt[prev_pos:pos], pos)
 
 # The main 'run' function
-def run(inpt: str, stack: list, env: dict):
+def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
     c = 0 # Pointer
     vc = 0 # Virtual pointer
     line = 1 # Line
+    start_string, end_string = ("{", "}") if not no_curly else ("[", "]")
 
     while c < len(inpt):
         current = inpt[c]
 
         # String
-        if current == "{":
+        if current == start_string:
             c += 1 # Ignore the '{'
-            string, c = consume(lambda c: c != "}", inpt, c)
+            string, c = consume(lambda c: c != end_string, inpt, c)
             string = string.strip()
             stack.append(string)
             c += 1
@@ -96,14 +97,13 @@ def run(inpt: str, stack: list, env: dict):
     return stack, env
 
 # Run the input without worrying about stack and environment
-def run_script(script: str, env: dict = {}):
+def run_script(script: str, env: dict = {}, no_curly: bool = True):
     if env != {}:
         stack, _ = init_env()
-        env = env
-        stack, env = run(script, stack, env)
+        stack, env = run(script, stack, env, no_curly)
     else:
         stack, env = init_env()
-        stack, env = run(script, stack, env)
+        stack, env = run(script, stack, env, no_curly)
 
 # For loop
 def each(script: str, how_much: int):
