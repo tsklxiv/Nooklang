@@ -77,8 +77,7 @@ def run(inpt: str, stack: list, env: dict):
         elif current == "{":
             c += 1
             string, c = consume(lambda c: c != "}", inpt, c)
-            print(string)
-            # stack.append(string)
+            stack.append(string)
             c += 1
             vc = c 
         elif identifier(current):
@@ -97,14 +96,14 @@ def run(inpt: str, stack: list, env: dict):
     return stack, env
 
 # Run the input without worrying about stack and environment
-def run_script(script: str, stack: list = [], env: dict = {}):
+def run_script(script: str):
     stack, env = init_env()
     stack, env = run(script, stack, env)
 
 # For loop
-def each(script: str, how_much: int, env: dict = {}):
+def each(script: str, how_much: int):
     for _ in range(how_much):
-        run_script(script, env=env)
+        run_script(script)
 
 # Initialize environment
 def init_env(stack: list = [], env: dict = {}) -> tuple:
@@ -119,8 +118,8 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "w": lambda: print(pop(stack)),
         "p": lambda: print(peek(stack)),
         "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
-        "l": lambda: stack.append(env[str(pop(stack)).strip()]),
-        "x": lambda: run_script(str(pop(stack)), env=env),
+        "l": lambda: stack.append(env[str(pop(stack))]),
+        "x": lambda: run_script(str(pop(stack))),
         "e": lambda: each(str(pop(stack)), pop(stack)),
         "i": lambda: stack.append(int(input(""))),
     }
