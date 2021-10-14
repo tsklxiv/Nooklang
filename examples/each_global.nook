@@ -1,6 +1,6 @@
 # Each, but with global variables.
 10
-{a} s
+sa
 5
-{ [ a ] l 1 + w }
+{ la 1 + w }
 e

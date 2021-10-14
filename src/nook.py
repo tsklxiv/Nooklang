@@ -72,9 +72,22 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             number = int(number) * -1
             vc = c
             stack.append(number)
+        # Store/Load
+        elif current == "s":
+            var, c = consume(lambda c: c != " ", inpt, c)
+            value = pop(stack)
+            vc = c
+
+            set_env(env, var, value)
+        elif current == "w":
+            var, c = consume(lambda c: c != " ", inpt, c)
+            vc = c
+
+            stack.append(env[var])
         elif current in WHITESPACE:
             vc += 1
             c += 1
+        # Comment
         elif current == "#":
             while c < len(inpt) and inpt[c] != "\n":
                 c += 1
@@ -139,8 +152,6 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "v": lambda: print(stack),
         "w": lambda: print(pop(stack)),
         "p": lambda: print(peek(stack)),
-        "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
-        "l": lambda: stack.append(env[str(pop(stack))]),
         "x": lambda: run_script(str(pop(stack)).strip(), env=env),
         "e": lambda: each(str(pop(stack)), pop(stack), env=env),
         "d": lambda: stack.append(stack[-1]),
