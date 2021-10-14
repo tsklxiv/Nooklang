@@ -1,4 +1,4 @@
 # Each, but with global variables.
 10
 {a} s
-5 { {a} l w } e
+5 { { a } l w } e
