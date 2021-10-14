@@ -72,14 +72,7 @@ def run(inpt: str, stack: list, env: dict):
         elif current == "\n":
             vc = 0
             line += 1
-            c += 1
-        # String
-        elif current == "{":
-            c += 1
-            string, c = consume(lambda c: c != "}", inpt, c)
-            stack.append(string)
-            c += 1
-            vc = c 
+            c += 1 
         elif identifier(current):
             name, c = consume(lambda c: identifier(c), inpt, c)
             vc = c
@@ -88,6 +81,13 @@ def run(inpt: str, stack: list, env: dict):
                 env[name]()
             else:
                 report(f"Not defined: {repr(name)}", line, vc) 
+        # String
+        elif current == "{":
+            c += 1
+            string, c = consume(lambda c: c != "}", inpt, c)
+            stack.append(string)
+            c += 1
+            vc = c 
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
             vc += 1
