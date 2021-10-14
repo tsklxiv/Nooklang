@@ -1,0 +1,4 @@
+# 'Hello world!' in Nook.
+{Hello world!}w # Write
+{Hello world!}p # The same, but without popping the stack
+.
