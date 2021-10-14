@@ -106,9 +106,9 @@ def run_script(script: str, env: dict = {}, no_curly: bool = True):
         stack, env = run(script, stack, env, no_curly)
 
 # For loop
-def each(script: str, how_much: int):
+def each(script: str, how_much: int, env: dict = {}):
     for _ in range(how_much):
-        run_script(script)
+        run_script(script, env=env)
 
 # Initialize environment
 def init_env(stack: list = [], env: dict = {}) -> tuple:
