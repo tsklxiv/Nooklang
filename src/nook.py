@@ -41,6 +41,7 @@ def consume(condition, inpt: str, pos: int):
 
     return (inpt[prev_pos:pos], pos)
 
+# The main 'run' function
 def run(inpt: str, stack: list, env: dict):
     c = 0 # Pointer
     vc = 0 # Virtual pointer
@@ -99,6 +100,11 @@ def run_script(script: str):
     stack, env = init_env()
     stack, env = run(script, stack, env)
 
+# For loop
+def each(script: str, how_much: int):
+    for _ in range(how_much):
+        run_script(script)
+
 # Initialize environment
 def init_env(stack: list = [], env: dict = {}) -> tuple:
     env = {
@@ -114,6 +120,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
         "l": lambda: stack.append(env[str(pop(stack))]),
         "x": lambda: run_script(str(pop(stack))),
+        "e": lambda: each(str(pop(stack)), pop(stack)),
     }
 
     return (stack, env)
