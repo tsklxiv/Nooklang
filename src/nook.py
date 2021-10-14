@@ -91,6 +91,8 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             name, c = consume(lambda c: identifier(c), inpt, c)
             vc = c
 
+            print(name)
+
             if name in env:
                 env[name]()
             else:
