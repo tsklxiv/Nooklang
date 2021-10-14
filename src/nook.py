@@ -83,10 +83,10 @@ def run(inpt: str, stack: list, env: dict):
                 report(f"Not defined: {repr(name)}", line, vc) 
         # String
         elif current == "{":
-            c += 1
+            c += 1 # Ignore the '{'
             string, c = consume(lambda c: c != "}", inpt, c)
             stack.append(string)
-            c += 1
+            # c += 1
             vc = c 
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
