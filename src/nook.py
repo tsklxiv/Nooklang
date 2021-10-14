@@ -10,7 +10,7 @@ VERSION = "0.1"
 
 # Lambdas
 numeric = lambda c: c.isnumeric()
-identifier = lambda c: (c.isalpha() or c.isascii()) and c not in WHITESPACE
+identifier = lambda c: c.isalpha() and c not in WHITESPACE
 report = lambda msg, line, pos: print(
     f"Error: {msg}" + ("" if (line == None) else f"\nAt line {line}, position {pos}")
 )
@@ -91,13 +91,10 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             name, c = consume(lambda c: identifier(c), inpt, c)
             vc = c
 
-            print(name)
-
             if name in env:
                 env[name]()
             else:
-                stack.append(str(name))
-                # report(f"Not defined: {repr(name)}", line, vc)
+                report(f"Not defined: {repr(name)}", line, vc)
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
             vc += 1
