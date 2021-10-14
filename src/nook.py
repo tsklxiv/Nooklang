@@ -54,8 +54,9 @@ def run(inpt: str, stack: list, env: dict):
         if current == "{":
             c += 1 # Ignore the '{'
             string, c = consume(lambda c: c != "}", inpt, c)
+            string = string.strip()[1:-1]
             stack.append(string)
-            # c += 1
+            c += 1
             vc = c  
         # Consume negative numbers (_500 = -500)
         elif current == "_":
