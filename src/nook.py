@@ -75,9 +75,10 @@ def run(inpt: str, stack: list, env: dict):
             c += 1
         # String
         elif current == "{":
-            # c += 1
+            c += 1
             string, c = consume(lambda c: c != "}", inpt, c)
-            stack.append(string)
+            print(string)
+            # stack.append(string)
             c += 1
             vc = c 
         elif identifier(current):
