@@ -79,7 +79,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             vc = c
 
             set_env(env, var, value)
-        elif current == "w":
+        elif current == "l":
             var, c = consume(lambda c: c != " ", inpt, c)
             vc = c
 
