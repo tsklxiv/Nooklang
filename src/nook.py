@@ -135,6 +135,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "l": lambda: stack.append(env[str(pop(stack))]),
         "x": lambda: run_script(str(pop(stack)).strip(), env=env),
         "e": lambda: each(str(pop(stack)), pop(stack), env=env),
+        "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
     }
 
