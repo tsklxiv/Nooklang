@@ -18,9 +18,3 @@ repos:
     rev: 19.3b0
     hooks:
     -   id: black
--   repo: local
-    hooks:
-    -   id: build-executable
-        name: Build the language to executable using Nuitka
-        entry: ./build_executable
-        language: system
