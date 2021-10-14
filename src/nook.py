@@ -75,7 +75,7 @@ def run(inpt: str, stack: list, env: dict):
             c += 1
         # String
         elif current == "{":
-            c += 2
+            # c += 1
             string, c = consume(lambda c: c != "}", inpt, c)
             stack.append(string)
             c += 1
