@@ -93,7 +93,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             report(f"Invalid character: {repr(current)}", line, vc)
             vc += 1
             c += 1
-    
+ 
     return stack, env
 
 # Run the input without worrying about stack and environment
@@ -106,7 +106,7 @@ def run_script(script: str, env: dict = {}, no_curly: bool = True):
         stack, env = run(script, stack, env, no_curly)
 
 # For loop
-def each(script: str, how_much: int, env: dict = {}):
+def each(script: str, how_much: int, env: dict):
     for _ in range(how_much):
         run_script(script, env=env)
 
@@ -125,7 +125,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
         "l": lambda: stack.append(env[str(pop(stack))]),
         "x": lambda: run_script(str(pop(stack)).strip(), env=env),
-        "e": lambda: each(str(pop(stack)), pop(stack)),
+        "e": lambda: each(str(pop(stack)), pop(stack), env=env),
         "i": lambda: stack.append(int(input(""))),
     }
 
