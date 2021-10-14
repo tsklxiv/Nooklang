@@ -2,7 +2,7 @@
 i # Get user input
 {a} s # Store it to 'a'
 {a} l # Load it for the 'for' loop
-{{a} l 1 - w} # Print a - 1
+{ {a} l 1 - w } # Print a - 1
 e # Each ('for')
 # Pseudo code:
 # a = int input ""
