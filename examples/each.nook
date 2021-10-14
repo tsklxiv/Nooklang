@@ -1,6 +1,6 @@
 # For ('each') loop in Nook.
-"Happy birthday to you!" # The string
-5{p}e # For loop
+{Happy birthday to you!} # The string to print
+5{p}e # Print "Happy birthday to you!" 5 times
 # Pseudo code:
 # loop (0..4):
 # 	print "Happy birthday to you!"
