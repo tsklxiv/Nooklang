@@ -49,12 +49,12 @@ def run(inpt: str, stack: list, env: dict):
 
     while c < len(inpt):
         current = inpt[c]
-        
+
         # String
         if current == "{":
             c += 1 # Ignore the '{'
             string, c = consume(lambda c: c != "}", inpt, c)
-            string = string.strip()[1:-1]
+            string = string.strip()
             stack.append(string)
             c += 1
             vc = c  
