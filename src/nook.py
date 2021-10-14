@@ -3,6 +3,8 @@
     The Nook Programming Language.
 
 """
+# Imports
+from collections import deque
 
 # Consts
 WHITESPACE = " \t\r\f"
@@ -22,7 +24,7 @@ def set_env(env: dict, name: str, value) -> dict:
     return env
 
 
-def pop(stack: list):
+def pop(stack: deque):
     if len(stack) == 0:
         report("Stack empty", None, 0)
         return 0
@@ -30,7 +32,7 @@ def pop(stack: list):
         return stack.pop()
 
 
-def peek(stack: list):
+def peek(stack: deque):
     if len(stack) == 0:
         report("Stack empty", None, 0)
         return 0
@@ -129,7 +131,7 @@ def each(script: str, how_much: int, env: dict):
 
 
 # Initialize environment
-def init_env(stack: list = [], env: dict = {}) -> tuple:
+def init_env(stack: deque = deque(), env: dict = {}) -> tuple:
     env = {
         "+": lambda: stack.append(stack.pop() + stack.pop()),
         "-": lambda: stack.append(stack.pop() - stack.pop()),
