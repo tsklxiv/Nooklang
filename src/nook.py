@@ -96,7 +96,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             if name in env:
                 env[name]()
             else:
-                stack.append(name)
+                stack.append(str(name))
                 # report(f"Not defined: {repr(name)}", line, vc)
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
