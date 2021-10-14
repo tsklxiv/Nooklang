@@ -96,9 +96,14 @@ def run(inpt: str, stack: list, env: dict):
     return stack, env
 
 # Run the input without worrying about stack and environment
-def run_script(script: str):
-    stack, env = init_env()
-    stack, env = run(script, stack, env)
+def run_script(script: str, env: dict = {}):
+    if env != {}:
+        stack, _ = init_env()
+        env = env
+        stack, env = run(script, stack, env)
+    else:
+        stack, env = init_env()
+        stack, env = run(script, stack, env)
 
 # For loop
 def each(script: str, how_much: int):
@@ -119,7 +124,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "p": lambda: print(peek(stack)),
         "s": lambda: set_env(env, str(pop(stack)), pop(stack)),
         "l": lambda: stack.append(env[str(pop(stack))]),
-        "x": lambda: run_script(str(pop(stack))),
+        "x": lambda: run_script(str(pop(stack)).strip(), env=env),
         "e": lambda: each(str(pop(stack)), pop(stack)),
         "i": lambda: stack.append(int(input(""))),
     }
