@@ -11,6 +11,7 @@ VERSION = "0.1"
 # Lambdas
 numeric = lambda c: c.isnumeric()
 identifier = lambda c: c.isalpha() and c not in WHITESPACE
+symbol = lambda c: c.isascii() and c not in WHITESPACE
 report = lambda msg, line, pos: print(
     f"Error: {msg}" + ("" if (line == None) else f"\nAt line {line}, position {pos}")
 )
@@ -94,7 +95,15 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             if name in env:
                 env[name]()
             else:
-                report(f"Not defined: {repr(name)}", line, vc)
+                report(f"Name not defined: {repr(name)}", line, vc)
+        elif symbol(current):
+            sym, c = consume(lambda c: symbol(c), inpt, c)
+            vc = c
+
+            if sym in env:
+                env[sym]()
+            else:
+                report(f"Symbol not defined: {repr(sym)}", line, vc)
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
             vc += 1
