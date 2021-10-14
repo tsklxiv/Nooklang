@@ -12,9 +12,10 @@ def repl():
     print(f"Version {VERSION}")
 
     stack, env = init_env()
-    
+
     while True:
         stack, env = run(input(">> "), stack, env)
+
 
 # Argument handler
 def arg_handler():

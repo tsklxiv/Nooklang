@@ -11,12 +11,15 @@ VERSION = "0.1"
 # Lambdas
 numeric = lambda c: c.isnumeric()
 identifier = lambda c: (c.isalpha() or c.isascii()) and c not in WHITESPACE
-report = lambda msg, line, pos: print(f"Error: {msg}" + ("" if (line == None) else f"\nAt line {line}, position {pos}"))
+report = lambda msg, line, pos: print(
+    f"Error: {msg}" + ("" if (line == None) else f"\nAt line {line}, position {pos}")
+)
 
 # Helper functions
 def set_env(env: dict, name: str, value) -> dict:
     env[name] = value
     return env
+
 
 def pop(stack: list):
     if len(stack) == 0:
@@ -25,12 +28,14 @@ def pop(stack: list):
     else:
         return stack.pop()
 
+
 def peek(stack: list):
     if len(stack) == 0:
         report("Stack empty", None, 0)
         return 0
     else:
         return stack[-1]
+
 
 def consume(condition, inpt: str, pos: int):
     prev_pos = pos
@@ -41,11 +46,12 @@ def consume(condition, inpt: str, pos: int):
 
     return (inpt[prev_pos:pos], pos)
 
+
 # The main 'run' function
 def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
-    c = 0 # Pointer
-    vc = 0 # Virtual pointer
-    line = 1 # Line
+    c = 0  # Pointer
+    vc = 0  # Virtual pointer
+    line = 1  # Line
     start_string, end_string = ("{", "}") if not no_curly else ("[", "]")
 
     while c < len(inpt):
@@ -53,12 +59,12 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
 
         # String
         if current == start_string:
-            c += 1 # Ignore the '{'
+            c += 1  # Ignore the '{'
             string, c = consume(lambda c: c != end_string, inpt, c)
             string = string.strip()
             stack.append(string)
             c += 1
-            vc = c  
+            vc = c
         # Consume negative numbers (_500 = -500)
         elif current == "_":
             c += 1
@@ -75,7 +81,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
         elif current == "\n":
             vc = 0
             line += 1
-            c += 1 
+            c += 1
         elif numeric(current):
             number, c = consume(lambda c: numeric(c), inpt, c)
             number = int(number)
@@ -88,13 +94,14 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
             if name in env:
                 env[name]()
             else:
-                report(f"Not defined: {repr(name)}", line, vc) 
+                report(f"Not defined: {repr(name)}", line, vc)
         else:
             report(f"Invalid character: {repr(current)}", line, vc)
             vc += 1
             c += 1
- 
+
     return stack, env
+
 
 # Run the input without worrying about stack and environment
 def run_script(script: str, env: dict = {}, no_curly: bool = True):
@@ -105,16 +112,18 @@ def run_script(script: str, env: dict = {}, no_curly: bool = True):
         stack, env = init_env()
         stack, env = run(script, stack, env, no_curly)
 
+
 # For loop
 def each(script: str, how_much: int, env: dict):
     for _ in range(how_much):
         run_script(script, env=env)
 
+
 # Initialize environment
 def init_env(stack: list = [], env: dict = {}) -> tuple:
-    env = { 
-        "+": lambda: stack.append(stack.pop() + stack.pop()), 
-        "-": lambda: stack.append(stack.pop() - stack.pop()), 
+    env = {
+        "+": lambda: stack.append(stack.pop() + stack.pop()),
+        "-": lambda: stack.append(stack.pop() - stack.pop()),
         "*": lambda: stack.append(stack.pop() * stack.pop()),
         "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
