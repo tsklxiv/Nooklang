@@ -154,7 +154,7 @@ def int_to_bool(inpt: int) -> bool:
 
 # Logical functions
 def int_not(v: int) -> int:
-    return bool_to_int(not v)
+    return int(not v)
 
 
 def int_and(v1: int, v2: int) -> int:
