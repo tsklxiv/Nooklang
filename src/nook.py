@@ -61,7 +61,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
 
         # String
         if current == start_string:
-            # c += 1  # Ignore the '{'
+            c += 1  # Ignore the '{'
             string, c = consume(lambda c: c != end_string, inpt, c)
             string = string.strip()
             stack.append(string)
