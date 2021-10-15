@@ -41,3 +41,17 @@ Examples:
 ```
 
 You can also see the `logical_op` example in `examples/`.
+
+## 0.6 (15/10/2021)
+
+Add the `?` operator.
+
+`?` is basically the `if` function.
+
+Format of `?`:
+
+```
+{<if>}{<then>}{<else>}?
+```
+
+You can also see the `if` example in `examples/`.
