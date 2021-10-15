@@ -153,11 +153,11 @@ def int_not(v: int) -> int:
 
 
 def int_and(v1: int, v2: int) -> int:
-    return int(v1 and v2)
+    return int(not (v1 and v2))
 
 
 def int_or(v1: int, v2: int) -> int:
-    return int(v1 or v2)
+    return int(not (v1 or v2))
 
 
 # Initialize environment
