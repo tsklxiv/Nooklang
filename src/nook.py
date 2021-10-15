@@ -147,29 +147,21 @@ def nook_each(script: str, how_much: int, env: dict):
 
 
 # If
-def nook_if(elsee: str, then: str, iff: str):
+def nook_if(elsee: str, then: str, iff: str, env: dict):
     if_result = not bool(pop(run_script(iff)))
 
     if if_result:
-        _ = run_script(then)
+        _ = run_script(then, env=env)
     else:
-        _ = run_script(elsee)
+        _ = run_script(elsee, env=env)
 
 
 # Loop
-def nook_loop(condition: str, script: str):
-    while True:
-        condition_result = pop(run_script(condition))
+def nook_loop(condition: str, script: str, env: dict):
+    cond_result = True if condition == "" else not bool(pop(run_script(condition)))
 
-        if condition_result == "":
-            _ = run_script(script)
-        else:
-            condition_result = not bool(condition_result)
-
-            if condition_result:
-                _ = run_script(script)
-            else:
-                break
+    while cond_result:
+        _ = run_script(script, env=env)
 
 
 # Convert boolean to int
@@ -206,8 +198,8 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "e": lambda: nook_each(str(pop(stack)), pop(stack), env=env),
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
-        "t": lambda: nook_loop(str(pop(stack)), str(pop(stack))),
-        "?": lambda: nook_if(str(pop(stack)), str(pop(stack)), str(pop(stack))),
+        "t": lambda: nook_loop(str(pop(stack)), str(pop(stack)), env),
+        "?": lambda: nook_if(str(pop(stack)), str(pop(stack)), str(pop(stack)), env),
         "~": lambda: stack.append(int_not(pop(stack))),
         "&": lambda: stack.append(int_and(pop(stack), pop(stack))),
         "|": lambda: stack.append(int_or(pop(stack), pop(stack))),
