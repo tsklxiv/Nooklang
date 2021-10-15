@@ -142,9 +142,18 @@ def each(script: str, how_much: int, env: dict):
         run_script(script, env=env)
 
 
+# Some logical op functions
+def equal(stack: list) -> bool:
+    v1 = pop(stack)
+    v2 = pop(stack)
+
+    print(v1, " ", v2)
+
+    return v1 == v2
+
+
 # Convert boolean to int
 def bool_to_int(inpt: bool) -> int:
-    print(inpt)
     if inpt:
         return 0
     return 1
@@ -158,7 +167,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "*": lambda: stack.append(stack.pop() * stack.pop()),
         "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
-        "=": lambda: stack.append(bool_to_int(pop(stack) == pop(stack))),
+        "=": lambda: stack.append(bool_to_int(equal(stack))),
         ".": lambda: pop(stack),
         "v": lambda: print(stack),
         "w": lambda: print(pop(stack)),
