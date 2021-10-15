@@ -167,7 +167,7 @@ def nook_loop(condition: str, script: str, env: dict):
     cond_result = True if condition == "" else not bool(pop(run_script(condition)))
 
     while cond_result:
-        _ = run_script(script, env=env)
+        run_script(script, env=env)
 
 
 # Convert boolean to int
