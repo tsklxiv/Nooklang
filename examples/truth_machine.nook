@@ -10,5 +10,5 @@
 i # Get user's input
 {0 =} # Condition
 {0 w} # Then
-{[][1 w]t} # Else
+{[] [1 w] t} # Else
 ? # If
