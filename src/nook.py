@@ -59,7 +59,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
 
         # String
         if current == start_string:
-            prev_c = c
+            prev_c = c + 1
             c += 1
 
             while c < len(inpt) and inpt[c] != end_string:
