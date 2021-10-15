@@ -156,17 +156,14 @@ def nook_each(script: str, how_much: int, env: dict):
 def nook_if(elsee: str, then: str, iff: str, env: dict):
     if_result = not bool(pop(run_script(iff)))
 
-    if if_result:
-        _ = run_script(then, env=env)
-    else:
-        _ = run_script(elsee, env=env)
+    run_script((then if if_result else elsee), env=env)
 
 
 # Loop
 def nook_loop(condition: str, script: str, env: dict):
     cond_result = True if condition == "" else not bool(pop(run_script(condition)))
 
-    while cond_result:
+    while True:
         run_script(script, env=env)
 
 
