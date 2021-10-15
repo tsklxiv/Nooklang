@@ -157,7 +157,6 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "*": lambda: stack.append(stack.pop() * stack.pop()),
         "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
-        "=": lambda: stack.append(bool_to_int(pop(stack) == pop(stack))),
         ".": lambda: pop(stack),
         "v": lambda: print(stack),
         "w": lambda: print(pop(stack)),
@@ -166,6 +165,12 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "e": lambda: each(str(pop(stack)), pop(stack), env=env),
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
+        "=": lambda: stack.append(bool_to_int(pop(stack) == pop(stack))),
+        ">": lambda: stack.append(bool_to_int(pop(stack) > pop(stack))),
+        "<": lambda: stack.append(bool_to_int(pop(stack) < pop(stack))),
+        ">=": lambda: stack.append(bool_to_int(pop(stack) >= pop(stack))),
+        "<=": lambda: stack.append(bool_to_int(pop(stack) <= pop(stack))),
+        "<>": lambda: stack.append(bool_to_int(pop(stack) != pop(stack))),
     }
 
     return (stack, env)
