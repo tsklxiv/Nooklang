@@ -144,10 +144,10 @@ def each(script: str, how_much: int, env: dict):
 
 # Convert boolean to int
 def bool_to_int(inpt: bool) -> int:
+    print(inpt)
     if inpt:
         return 0
-    else:
-        return 1
+    return 1
 
 
 # Initialize environment
