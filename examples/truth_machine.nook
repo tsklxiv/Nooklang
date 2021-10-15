@@ -10,9 +10,5 @@
 i # Get user's input
 {0 =} # Condition
 {0 w} # Then
-{
-	[] # Condition (empty == forever)
-	[1 w] # Block
-	l # Loop (while)
-} # Else
+{[][1 w]l} # Else
 ? # If
