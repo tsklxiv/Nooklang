@@ -44,8 +44,6 @@ def consume(condition, inpt: str, pos: int):
     while pos < len(inpt) and condition(inpt[pos]):
         pos += 1
 
-    pos += 1
-
     return (inpt[prev_pos:pos], pos)
 
 
@@ -61,9 +59,15 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
 
         # String
         if current == start_string:
-            c += 1  # Ignore the '{'
-            string, c = consume(lambda c: c != end_string, inpt, c)
-            string = string.strip()
+            prev_c = c
+            c += 1
+
+            while c < len(inpt) and inpt[c] != end_string:
+                if inpt[c] == end_string:
+                    break
+                c += 1
+
+            string = inpt[prev_c:c]
             stack.append(string)
             c += 1
             vc = c
