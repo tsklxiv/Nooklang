@@ -62,11 +62,11 @@ You can also see the `if` example in `examples/`.
 
 ## 0.7 (15/10/2021)
 
-Add the `l` operator.
+Add the `t` operator.
 
-`l` is short for `loop` and it is used for, well, loop.
+`t` is short for `trap` and it is used as a while loop.
 
-Format of `l`:
+Format of `t`:
 
 ```
 {<condition>}{<block>}l
