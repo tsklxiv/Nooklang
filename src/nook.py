@@ -160,10 +160,8 @@ def nook_if(elsee: str, then: str, iff: str, env: dict):
 
 
 # Loop
-def nook_loop(condition: str, script: str, env: dict):
-    cond_result = True if condition == "" else bool(pop(run_script(condition)))
-
-    while cond_result:
+def nook_loop(script: str, env: dict):
+    while True:
         run_script(script, env=env)
 
 
