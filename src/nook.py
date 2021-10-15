@@ -144,7 +144,7 @@ def each(script: str, how_much: int, env: dict):
 
 # Convert boolean to int
 def bool_to_int(inpt: bool) -> int:
-    if inpt is True:
+    if inpt:
         return 0
     return 1
 
