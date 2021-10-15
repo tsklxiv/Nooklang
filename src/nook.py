@@ -146,7 +146,8 @@ def each(script: str, how_much: int, env: dict):
 def bool_to_int(inpt: bool) -> int:
     if inpt:
         return 0
-    return 1
+    else:
+        return 1
 
 
 # Initialize environment
