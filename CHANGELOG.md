@@ -62,7 +62,7 @@ You can also see the `if` example in `examples/`.
 
 ## 0.7 (15/10/2021)
 
-Add the `t` operator.
+- Add the `t` operator.
 
 `t` is short for `trap` and it is used as a while loop.
 
@@ -75,3 +75,5 @@ Format of `t`:
 Note that if `condition` is an empty string, that means a infinite loop.
 
 You can also see the `truth_machine` example in `examples/`.
+
+- Fix the string consume when the string is empty
