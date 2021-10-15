@@ -142,11 +142,27 @@ def each(script: str, how_much: int, env: dict):
         run_script(script, env=env)
 
 
+# Logical functions
+def int_not(v: int) -> int:
+    return not v
+
+
+def int_and(v1: int, v2: int) -> int:
+    return v1 and v2
+
+
+def int_or(v1: int, v2: int) -> int:
+    return v1 or v2
+
+
 # Convert boolean to int
 def bool_to_int(inpt: bool) -> int:
-    if inpt:
-        return 0
-    return 1
+    return 0 if inpt else 1
+
+
+# Convert int to boolean
+def int_to_bool(inpt: int) -> bool:
+    return inpt == 0
 
 
 # Initialize environment
@@ -165,6 +181,9 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "e": lambda: each(str(pop(stack)), pop(stack), env=env),
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
+        "~": lambda: stack.append(int_not(pop(stack))),
+        "&": lambda: stack.append(int_and(pop(stack), pop(stack))),
+        "|": lambda: stack.append(int_or(pop(stack), pop(stack))),
         "=": lambda: stack.append(bool_to_int(pop(stack) == pop(stack))),
         ">": lambda: stack.append(bool_to_int(pop(stack) > pop(stack))),
         "<": lambda: stack.append(bool_to_int(pop(stack) < pop(stack))),
