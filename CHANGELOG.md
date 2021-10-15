@@ -59,3 +59,19 @@ You can also see the `if` example in `examples/`.
 ## 0.6.1 (15/10/2021)
 
 - Change the `logical_op` example (`examples/logical_op.nook`)
+
+## 0.7 (15/10/2021)
+
+Add the `l` operator.
+
+`l` is short for `loop` and it is used for, well, loop.
+
+Format of `l`:
+
+```
+{<condition>}{<block>}l
+```
+
+Note that if `condition` is an empty string, that means a infinite loop.
+
+You can also see the `truth_machine` example in `examples/`.
