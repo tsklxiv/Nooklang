@@ -44,6 +44,8 @@ def consume(condition, inpt: str, pos: int):
     while pos < len(inpt) and condition(inpt[pos]):
         pos += 1
 
+    pos += 1
+
     return (inpt[prev_pos:pos], pos)
 
 
