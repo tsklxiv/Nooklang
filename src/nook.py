@@ -142,6 +142,13 @@ def each(script: str, how_much: int, env: dict):
         run_script(script, env=env)
 
 
+# Convert boolean to int
+def bool_to_int(inpt: bool) -> int:
+    if inpt is True:
+        return 0
+    return 1
+
+
 # Initialize environment
 def init_env(stack: list = [], env: dict = {}) -> tuple:
     env = {
@@ -150,6 +157,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "*": lambda: stack.append(stack.pop() * stack.pop()),
         "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
+        "=": lambda: stack.append(bool_to_int(pop(stack) == pop(stack))),
         ".": lambda: pop(stack),
         "v": lambda: print(stack),
         "w": lambda: print(pop(stack)),
