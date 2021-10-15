@@ -1,19 +1,19 @@
 # Logical operators in Nook.
 {Equal: 50 == 50} w
 50 50 = w
-{Less than: 50 < 40}
+{Less than: 50 < 40} w
 40 50 < w
-{Greater than: 50 > 120}
+{Greater than: 50 > 120} w
 120 50 > w
-{Equal or greater than: 100 >= 100}
+{Equal or greater than: 100 >= 100} w
 100 100 >= w
-{Equal or less than: 456 <= 50}
+{Equal or less than: 456 <= 50} w
 50 456 <= w
-{Not equal: 50 != 50}
+{Not equal: 50 != 50} w
 50 50 <> w
-{Not: !(50 == 50)}
+{Not: !(50 == 50)} w
 50 50 = ~ w
-{Or: 50 != 50 or 20 == 20}
+{Or: 50 != 50 or 20 == 20} w
 50 50 <> 20 20 = | w
-{And: 50 == 50 and 20 != 20}
+{And: 50 == 50 and 20 != 20} w
 50 50 = 20 20 <> & w
