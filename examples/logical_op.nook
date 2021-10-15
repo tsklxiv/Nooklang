@@ -5,4 +5,4 @@
 100 100 >= w # Equal or greater than. 100 >= 100
 50 456 <= w # Equal or less than. 456 <= 50
 50 50 <> w # Not equal. 50 != 50
-50 50 = ~ w # Not. !(50 == 50)
+50 50 = w # Not. !(50 == 50)
