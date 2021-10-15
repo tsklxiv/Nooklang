@@ -1,2 +1,7 @@
 # Logical operators in Nook.
-50 50 = w # Equal
+50 50 = w # Equal. 50 == 50
+40 50 < w # Less than. 50 < 40
+120 50 > w # Greater than. 50 > 120
+100 100 >= w # Equal or greater than. 100 >= 100
+50 456 <= w # Equal or less than. 456 <= 50
+50 50 <> w # Not equal. 50 != 50
