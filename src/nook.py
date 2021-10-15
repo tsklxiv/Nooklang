@@ -142,19 +142,6 @@ def each(script: str, how_much: int, env: dict):
         run_script(script, env=env)
 
 
-# Logical functions
-def int_not(v: int) -> int:
-    return not v
-
-
-def int_and(v1: int, v2: int) -> int:
-    return v1 and v2
-
-
-def int_or(v1: int, v2: int) -> int:
-    return v1 or v2
-
-
 # Convert boolean to int
 def bool_to_int(inpt: bool) -> int:
     return 0 if inpt else 1
@@ -163,6 +150,19 @@ def bool_to_int(inpt: bool) -> int:
 # Convert int to boolean
 def int_to_bool(inpt: int) -> bool:
     return inpt == 0
+
+
+# Logical functions
+def int_not(v: int) -> int:
+    return bool_to_int(not v)
+
+
+def int_and(v1: int, v2: int) -> int:
+    return v1 and v2
+
+
+def int_or(v1: int, v2: int) -> int:
+    return v1 or v2
 
 
 # Initialize environment
