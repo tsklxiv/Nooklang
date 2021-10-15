@@ -24,7 +24,7 @@ def set_env(env: dict, name: str, value) -> dict:
 def pop(stack: list):
     if len(stack) == 0:
         report("Stack empty", None, 0)
-        return 0
+        return 101
     else:
         return stack.pop()
 
@@ -32,7 +32,7 @@ def pop(stack: list):
 def peek(stack: list):
     if len(stack) == 0:
         report("Stack empty", None, 0)
-        return 0
+        return 101
     else:
         return stack[-1]
 
@@ -135,11 +135,23 @@ def run_script(script: str, env: dict = {}, no_curly: bool = True):
         stack, env = init_env()
         stack, env = run(script, stack, env, no_curly)
 
+    return stack
+
 
 # For loop
 def each(script: str, how_much: int, env: dict):
     for _ in range(how_much):
         run_script(script, env=env)
+
+
+# If
+def nook_if(elsee: str, then: str, iff: str):
+    if_result = bool(pop(run_script(iff)))
+
+    if if_result:
+        _ = run_script(then)
+    else:
+        _ = run_script(elsee)
 
 
 # Convert boolean to int
@@ -176,6 +188,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "e": lambda: each(str(pop(stack)), pop(stack), env=env),
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
+        "?": lambda: nook_if(str(pop(stack)), str(pop(stack)), str(pop(stack))),
         "~": lambda: stack.append(int_not(pop(stack))),
         "&": lambda: stack.append(int_and(pop(stack), pop(stack))),
         "|": lambda: stack.append(int_or(pop(stack), pop(stack))),
