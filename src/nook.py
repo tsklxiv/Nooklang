@@ -199,7 +199,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "e": lambda: nook_each(str(pop(stack)), pop(stack), env=env),
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
-        "t": lambda: nook_loop(str(pop(stack)), str(pop(stack)), env),
+        "t": lambda: nook_loop(str(pop(stack)), env),
         "?": lambda: nook_if(str(pop(stack)), str(pop(stack)), str(pop(stack)), env),
         "~": lambda: stack.append(int_not(pop(stack))),
         "&": lambda: stack.append(int_and(pop(stack), pop(stack))),
