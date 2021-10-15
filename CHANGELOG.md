@@ -18,3 +18,26 @@ Change the store/load operators. Now, to store value to a variable, do `s<VAR_NA
 instead of `{<VAR_NAME>}s`.
 
 The same as load variable: `l<VAR_NAME>`.
+
+## 0.1.4 (15/10/2021)
+
+Add logical operators:
+
+- `>`  (Less than)
+- `<`  (Greater than)
+- `>=` (Less or equal)
+- `<=` (Greater or equal)
+- `<>` (Not equal)
+- `~`  (Not)
+- `&`  (And)
+- `|`  (Or)
+
+Examples:
+
+```
+50 50 = w # 50 == 50
+40 50 < w # 50 < 40
+50 50 <> 20 20 = | w # 50 != 50 or 20 == 20
+```
+
+You can also see the `logical_op` example in `examples/`.
