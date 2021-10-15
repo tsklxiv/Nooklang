@@ -11,5 +11,5 @@ i # Get user's input
 sa # Store it to 'a'
 {la 0 =} # Condition. a == 0
 {0 w} # Then
-{[] [1 w] t} # Else
+{[1 w] t} # Else
 ? # If
