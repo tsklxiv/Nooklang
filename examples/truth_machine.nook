@@ -8,7 +8,8 @@
 # For more, see:
 # https://esolangs.org/wiki/Truth-machine
 i # Get user's input
-{0 =} # Condition
+sa # Store it to 'a'
+{la 0 =} # Condition. a == 0
 {0 w} # Then
 {[] [1 w] t} # Else
 ? # If
