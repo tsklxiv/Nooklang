@@ -161,7 +161,9 @@ def nook_if(elsee: str, then: str, iff: str, env: dict):
 
 # Loop
 def nook_loop(condition: str, script: str, env: dict):
-    cond_result = True if condition == "" else not bool(pop(run_script(condition)))
+    cond_result = True if condition == "" else bool(pop(run_script(condition)))
+
+    print(cond_result)
 
     while cond_result:
         run_script(script, env=env)
