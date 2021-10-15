@@ -55,3 +55,7 @@ Format of `?`:
 ```
 
 You can also see the `if` example in `examples/`.
+
+## 0.6.1 (15/10/2021)
+
+- Change the `logical_op` example (`examples/logical_op.nook`)
