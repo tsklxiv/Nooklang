@@ -146,7 +146,7 @@ def each(script: str, how_much: int, env: dict):
 
 # If
 def nook_if(elsee: str, then: str, iff: str):
-    if_result = bool(pop(run_script(iff)))
+    if_result = not bool(pop(run_script(iff)))
 
     if if_result:
         _ = run_script(then)
