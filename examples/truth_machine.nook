@@ -7,9 +7,6 @@
 #			Print 1
 # For more, see:
 # https://esolangs.org/wiki/Truth-machine
-i # Get user's input
-sa # Store it to 'a'
-{la 0 =} # Condition. a == 0
-{0 w} # Then
-{[1 w] t} # Else
-? # If
+i
+sa
+{la 0 =} {0 w} {[1 w] t} ?
