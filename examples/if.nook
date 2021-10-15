@@ -1,0 +1,5 @@
+# If-then-else in Nook.
+{10 10 =} # If
+{[10 == 10]w} # Then
+{[10 != 10, what???]w} # Else
+? # If operator
