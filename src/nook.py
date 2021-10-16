@@ -157,8 +157,8 @@ def nook_loop(stack: list, env: dict):
     acc = stack.pop()
 
     while acc >= 0:
-        run_script(script, env=env)
-        stack.append(acc)
+        stack = run_script(script, env=env)
+        acc = stack.pop()
 
 
 # Convert boolean to int
