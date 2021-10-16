@@ -156,7 +156,7 @@ def nook_loop(stack: list, env: dict):
     script = str(stack.pop())
     acc = stack.pop()
 
-    while acc != 0:
+    while acc >= 0:
         run_script(script, env=env)
         stack.append(acc)
 
