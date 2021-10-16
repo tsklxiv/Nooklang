@@ -21,18 +21,10 @@ def set_env(env: dict, name: str, value) -> dict:
     return env
 
 
-def pop(stack: list):
-    if len(stack) == 0:
-        report("Stack empty", None, 0)
-        return 101
-    else:
-        return stack.pop()
-
-
 def peek(stack: list):
     if len(stack) == 0:
         report("Stack empty", None, 0)
-        return 101
+        raise ValueError
     else:
         return stack[-1]
 
@@ -82,7 +74,7 @@ def run(inpt: str, stack: list, env: dict, no_curly: bool = False):
         elif current == "s":
             c += 1
             var, c = consume(lambda c: c != " ", inpt, c)
-            value = pop(stack)
+            value = stack.pop()
             vc = c
 
             env = set_env(env, var, value)
@@ -154,15 +146,19 @@ def nook_each(script: str, how_much: int, env: dict):
 
 # If
 def nook_if(elsee: str, then: str, iff: str, env: dict):
-    if_result = not bool(pop(run_script(iff)))
+    if_result = not bool(run_script(iff).pop())
 
     run_script((then if if_result else elsee), env=env)
 
 
 # Loop
-def nook_loop(script: str, env: dict):
-    while True:
+def nook_loop(stack: list, env: dict):
+    script = str(stack.pop())
+    acc = stack.pop()
+
+    while acc != 0:
         run_script(script, env=env)
+        stack.append(acc)
 
 
 # Convert boolean to int
@@ -191,25 +187,25 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "*": lambda: stack.append(stack.pop() * stack.pop()),
         "/": lambda: stack.append(stack.pop() // stack.pop()),
         "%": lambda: stack.append(stack.pop() % stack.pop()),
-        ".": lambda: pop(stack),
+        ".": lambda: stack.pop(),
         "v": lambda: print(stack),
-        "w": lambda: print(pop(stack)),
+        "w": lambda: print(stack.pop()),
         "p": lambda: print(peek(stack)),
-        "x": lambda: run_script(str(pop(stack)).strip(), env=env),
-        "e": lambda: nook_each(str(pop(stack)), pop(stack), env=env),
+        "x": lambda: run_script(str(stack.pop()).strip(), env=env),
+        "e": lambda: nook_each(str(stack.pop()), stack.pop(), env=env),
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
-        "t": lambda: nook_loop(str(pop(stack)), env),
-        "?": lambda: nook_if(str(pop(stack)), str(pop(stack)), str(pop(stack)), env),
-        "~": lambda: stack.append(int_not(pop(stack))),
-        "&": lambda: stack.append(int_and(pop(stack), pop(stack))),
-        "|": lambda: stack.append(int_or(pop(stack), pop(stack))),
-        "=": lambda: stack.append(bool_to_int(pop(stack) == pop(stack))),
-        ">": lambda: stack.append(bool_to_int(pop(stack) > pop(stack))),
-        "<": lambda: stack.append(bool_to_int(pop(stack) < pop(stack))),
-        ">=": lambda: stack.append(bool_to_int(pop(stack) >= pop(stack))),
-        "<=": lambda: stack.append(bool_to_int(pop(stack) <= pop(stack))),
-        "<>": lambda: stack.append(bool_to_int(pop(stack) != pop(stack))),
+        "t": lambda: nook_loop(stack, env),
+        "?": lambda: nook_if(str(stack.pop()), str(stack.pop()), str(stack.pop()), env),
+        "~": lambda: stack.append(int_not(stack.pop())),
+        "&": lambda: stack.append(int_and(stack.pop(), stack.pop())),
+        "|": lambda: stack.append(int_or(stack.pop(), stack.pop())),
+        "=": lambda: stack.append(bool_to_int(stack.pop() == stack.pop())),
+        ">": lambda: stack.append(bool_to_int(stack.pop() > stack.pop())),
+        "<": lambda: stack.append(bool_to_int(stack.pop() < stack.pop())),
+        ">=": lambda: stack.append(bool_to_int(stack.pop() >= stack.pop())),
+        "<=": lambda: stack.append(bool_to_int(stack.pop() <= stack.pop())),
+        "<>": lambda: stack.append(bool_to_int(stack.pop() != stack.pop())),
     }
 
     return (stack, env)
