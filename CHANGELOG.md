@@ -77,3 +77,7 @@ Note that if `condition` is an empty string, that means a infinite loop.
 You can also see the `truth_machine` example in `examples/`.
 
 - Fix the string consume when the string is empty
+
+## 0.7.1 (15/10/2021)
+
+- Change how the `t` command works, now it just a infinite loop command.
