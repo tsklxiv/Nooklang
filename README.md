@@ -4,7 +4,7 @@ Nook is a simple, concatenative programming language written in Python.
 
 ## Status
 
-Nook is currently very WIP. It lacks a lot of feature, and will need a quite long time of development.
+Nook is currently WIP. It lacks a lot of basic feature, and will need a quite long time of development.
 
 For now, Nook is enough to make very simple tests.
 
@@ -30,14 +30,24 @@ Finally, go to the cloned directory, and:
 		chmod +x ./build_executable
 		./build_executable
 		```
-- If you just want to run the language, use:
+	- Then, to run the language, use:
+			```sh
+			./nook
+			```
+- If you just want to run the language without compiling it, use:
 		```
 		python3 src/main.py
 		```
 
 ## How to use
 
-If you don't feed any file to the CLI argument, Nook will trigger the REPL by default.
+If you don't feed any file to the CLI argument, like this:
+
+```
+./nook
+```
+
+Nook will trigger the REPL by default.
 
 If so, Nook will tried to run that file.
 
