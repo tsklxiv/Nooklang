@@ -26,12 +26,12 @@ git clone https://github.com/HoangTuan110/nook
 
 Finally, go to the cloned directory, and:
 - If you want to compile the language, use:
-		```sh
+		```
 		chmod +x ./build_executable
 		./build_executable
 		```
 	- Then, to run the language, use:
-			```sh
+			```
 			./nook
 			```
 - If you just want to run the language without compiling it, use:
