@@ -151,7 +151,7 @@ def nook_if(elsee: str, then: str, iff: str, env: dict):
     run_script((then if if_result else elsee), env=env)
 
 
-# Loop
+# (While) Loop
 def nook_loop(stack: list, env: dict):
     script = str(stack.pop())
     acc = stack.pop()
@@ -166,15 +166,19 @@ def bool_to_int(inpt: bool) -> int:
     return 0 if inpt else 1
 
 
-# Logical functions
+# = Logical functions
+
+# 'not'
 def int_not(v: int) -> int:
     return int(not v)
 
 
+# 'and'
 def int_and(v1: int, v2: int) -> int:
     return int(not (v1 and v2))
 
 
+# 'or'
 def int_or(v1: int, v2: int) -> int:
     return int(not (v1 or v2))
 
