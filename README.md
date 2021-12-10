@@ -21,7 +21,7 @@ pip3 install -U nuitka
 Then, clone this repository:
 
 ```
-git clone https://github.com/HoangTuan110/nook
+git clone https://github.com/HoangTuan110/Nooklang
 ```
 
 Finally, go to the cloned directory, and:
