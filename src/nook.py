@@ -207,6 +207,8 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "=": lambda: stack.append(bool_to_int(stack.pop() == stack.pop())),
         ">": lambda: stack.append(bool_to_int(stack.pop() > stack.pop())),
         "<": lambda: stack.append(bool_to_int(stack.pop() < stack.pop())),
+        "++": lambda: stack.append(stack.pop() + 1),
+        "--": lambda: stack.append(stack.pop() - 1),
         ">=": lambda: stack.append(bool_to_int(stack.pop() >= stack.pop())),
         "<=": lambda: stack.append(bool_to_int(stack.pop() <= stack.pop())),
         "<>": lambda: stack.append(bool_to_int(stack.pop() != stack.pop())),
