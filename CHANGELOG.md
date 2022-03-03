@@ -81,3 +81,12 @@ You can also see the `truth_machine` example in `examples/`.
 ## 0.7.1 (15/10/2021)
 
 - Change how the `t` command works, now it just a infinite loop command.
+
+## 0.7.2 (02/03/2022)
+
+Sorry for such a long time not updating this.
+
+- Add
+	- `b` (convert int to binary string)
+	- `l` (length of string)
+	- `c` (count the number of appearance of a substring in string)
