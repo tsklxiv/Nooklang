@@ -5,7 +5,7 @@
 """
 # Consts
 WHITESPACE = " \t\r\f"
-VERSION = "0.7.2"
+VERSION = "0.7.3"
 
 # Lambdas
 numeric = lambda c: c.isnumeric()

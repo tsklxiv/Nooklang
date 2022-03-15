@@ -90,3 +90,8 @@ Sorry for such a long time not updating this.
 	- `b` (convert int to binary string)
 	- `l` (length of string)
 	- `c` (count the number of appearance of a substring in string)
+
+## 0.7.3 (15/03/2022)
+
+- Remove all the operators added in `0.7.2`, as they are not proved to be very useful by the author.
+- Fix the while loop
