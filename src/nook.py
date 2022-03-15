@@ -193,7 +193,6 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "b": lambda: stack.append(bin(stack.pop())[2:]),
         "l": lambda: stack.append(len(stack.pop())),
         "s": lambda: stack.append(str(stack.pop())),
-        "c": lambda: stack.append(stack.pop().count(str(stack.pop()))),
         "v": lambda: print(stack),
         "w": lambda: print(stack.pop()),
         "p": lambda: print(peek(stack)),
