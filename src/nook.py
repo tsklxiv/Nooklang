@@ -154,11 +154,9 @@ def nook_if(elsee: str, then: str, iff: str, env: dict):
 # (While) Loop
 def nook_loop(stack: list, env: dict):
     script = str(stack.pop())
-    acc = stack.pop()
 
-    while acc >= 0:
+    while True:
         stack = run_script(script, env=env)
-        acc = stack.pop()
 
 
 # Convert boolean to int
