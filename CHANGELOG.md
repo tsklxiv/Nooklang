@@ -95,3 +95,7 @@ Sorry for such a long time not updating this.
 
 - Remove all the operators added in `0.7.2`, as they are not proved to be very useful by the author.
 - Fix the while loop
+
+## 0.7.4 (22/04/2022)
+
+- Add operator `c`: Converts number to character

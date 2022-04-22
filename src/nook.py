@@ -5,7 +5,7 @@
 """
 # Consts
 WHITESPACE = " \t\r\f"
-VERSION = "0.7.3"
+VERSION = "0.7.4"
 
 # Lambdas
 numeric = lambda c: c.isnumeric()
@@ -201,6 +201,7 @@ def init_env(stack: list = [], env: dict = {}) -> tuple:
         "d": lambda: stack.append(stack[-1]),
         "i": lambda: stack.append(int(input(""))),
         "t": lambda: nook_loop(stack, env),
+        "c": lambda: stack.append(chr(stack.pop())),
         "?": lambda: nook_if(str(stack.pop()), str(stack.pop()), str(stack.pop()), env),
         "~": lambda: stack.append(int_not(stack.pop())),
         "&": lambda: stack.append(int_and(stack.pop(), stack.pop())),
