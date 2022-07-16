@@ -69,7 +69,7 @@ You can also see the `if` example in `examples/`.
 Format of `t`:
 
 ```
-{<condition>}{<block>}l
+{<condition>}{<block>}t
 ```
 
 Note that if `condition` is an empty string, that means a infinite loop.
