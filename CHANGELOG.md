@@ -104,3 +104,4 @@ Sorry for such a long time not updating this.
 
 - Remove command `s` (convert number to string) and `l` (print length of string), as these commands collide
 	with the command `s` and `l` for store/load variables
+- The command `b` is also removed, as it's no longer helpful
