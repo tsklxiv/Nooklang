@@ -4,9 +4,7 @@ Nook is a simple, concatenative programming language written in Python.
 
 ## Status
 
-Nook is currently WIP. It lacks a lot of basic feature, and will need a quite long time of development.
-
-For now, Nook is enough to make very simple tests.
+Nook is stable and ready to use.
 
 ## Installation
 
