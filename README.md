@@ -8,34 +8,24 @@ Nook is stable and ready to use.
 
 ## Installation
 
-First, install `python` (Python 3) and `pip`. (https://www.python.org)
+### Build the language as an executable
 
-Next, if you want to compile Nook to executable, install [Nuitka](https://nuitka.net) through `pip`:
-
-```
-pip3 install -U nuitka
-```
-
-Then, clone this repository:
-
-```
+```sh
+pip3 install -U nuitka # Install Nuitka
 git clone https://github.com/HoangTuan110/Nooklang
+cd Nooklang
+chmod +x ./build_executable
+./build_executable
+./nook
 ```
 
-Finally, go to the cloned directory, and:
-- If you want to compile the language, use:
-		```
-		chmod +x ./build_executable
-		./build_executable
-		```
-	- Then, to run the language, use:
-			```
-			./nook
-			```
-- If you just want to run the language without compiling it, use:
-		```
-		python3 src/main.py
-		```
+### Simply run the language
+
+```sh
+git clone https://github.com/HoangTuan110/Nooklang
+cd Nooklang
+python ./src/main.py
+```
 
 ## How to use
 
@@ -45,7 +35,7 @@ If you don't feed any file to the CLI argument, like this:
 ./nook
 ```
 
-Nook will trigger the REPL by default.
+Then Nook will trigger the REPL by default.
 
 If so, Nook will tried to run that file.
 
