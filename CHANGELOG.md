@@ -99,3 +99,8 @@ Sorry for such a long time not updating this.
 ## 0.7.4 (22/04/2022)
 
 - Add operator `c`: Converts number to character
+
+## 0.7.5 (16/07/2022)
+
+- Remove command `s` (convert number to string) and `l` (print length of string), as these commands collide
+	with the command `s` and `l` for store/load variables
